@@ -15,4 +15,3 @@ The download application is an application that allows users to download files f
 ```sh
 "We hereby declare that we disclaim any liability for any improper use of the software. Thank you for your understanding."
 ```
-----
