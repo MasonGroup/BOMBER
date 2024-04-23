@@ -43,7 +43,7 @@ namespace downloader
             this.payloadlink.Name = "payloadlink";
             this.payloadlink.Size = new System.Drawing.Size(178, 23);
             this.payloadlink.TabIndex = 0;
-            this.payloadlink.Text = "Enter payload link";
+            this.payloadlink.Text = "Enter file link";
             this.payloadlink.Click += new System.EventHandler(this.metroTextBox1_Click);
             // 
             // metroStyleManager1
