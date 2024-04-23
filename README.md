@@ -12,3 +12,7 @@ General Usage: MetroFramework libraries are used to design a stylish and elegant
 ---
 The download application is an application that allows users to download files from the internet using the Command Prompt (CMD). It provides a simple user interface where users can input links to files they want to download and specify settings such as disabling Windows Defender (WD) and running as an administrator (RunAsAdmin). When the "Build Payload" button is clicked, a PowerShell command is generated that downloads the file from the specified link to a temporary folder on the system, then executes the downloaded file.
 ---
+```sh
+"We hereby declare that we disclaim any liability for any improper use of the software. Thank you for your understanding."
+```
+----
