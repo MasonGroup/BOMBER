@@ -67,7 +67,7 @@ namespace downloader
             this.filename_payload.Name = "filename_payload";
             this.filename_payload.Size = new System.Drawing.Size(178, 23);
             this.filename_payload.TabIndex = 4;
-            this.filename_payload.Text = "filename.exe";
+            this.filename_payload.Text = "filename";
             // 
             // aboutbtn
             // 
