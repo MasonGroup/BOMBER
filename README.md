@@ -1,4 +1,4 @@
-# Sure, here's a breakdown of the provided code with a brief description
+BMOBER
 **Form1**
 ---
 This is the main form of the download application. It displays the user interface for the user to input download links and configure settings.
