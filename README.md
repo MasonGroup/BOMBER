@@ -1,5 +1,4 @@
 BMOBER
-**Form1**
 ---
 This is the main form of the download application. It displays the user interface for the user to input download links and configure settings.
 buildpayload_Click: This function is called when the "Build Payload" button is clicked. It gathers data from the user interface (e.g., file link and new file name) and then prepares a PowerShell command that executes the download and runs the downloaded file.
